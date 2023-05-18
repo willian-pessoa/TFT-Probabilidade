@@ -14,11 +14,11 @@ const SHOP_ODDS = {
   9: [0.09, 0.15, 0.30, 0.30, 0.16]
 }
 
-const formatPercentage = (number) => {
+export const formatPercentage = (number) => {
   return (number * 100).toFixed(2) + " %"
 }
 
-const computeOneChamp = (cost, level, rolls = 1, sameOutPool = 0, costOutPool = 0) => {
+export const computeOneChamp = (cost, level, rolls = 1, sameOutPool = 0, costOutPool = 0) => {
   let champChance = (POOL[cost][1] - sameOutPool) / ((POOL[cost][0] * POOL[cost][0]) - costOutPool)
   let shopChance = SHOP_ODDS[level][cost - 1] * 5
   let totalChance = champChance * shopChance
@@ -32,7 +32,7 @@ const computeOneChamp = (cost, level, rolls = 1, sameOutPool = 0, costOutPool = 
   return totalChance
 }
 
-const tableOfOdds = (cost, level, size = 25, sameOutPool = 0, costOutPool = 2 * 8) => {
+export const tableOfOdds = (cost, level, size = 25, sameOutPool = 0, costOutPool = 2 * 8) => {
   let TABLE_OF_ODDS = {}
 
   for (let i = 1; i <= size; i++) {
@@ -43,7 +43,7 @@ const tableOfOdds = (cost, level, size = 25, sameOutPool = 0, costOutPool = 2 * 
   return TABLE_OF_ODDS
 }
 
-const simuladorJogo = (nJogos, rolls, cost, level, foraDaPool = 0, custoForaPool = 0) => {
+export const simuladorJogo = (nJogos, rolls, cost, level, foraDaPool = 0, custoForaPool = 0) => {
   // {jogo: numero de copias}
   let JOGOS = {}
 
