@@ -1,31 +1,28 @@
 import { useState } from 'react';
-import { Box, useTheme, Typography } from '@mui/material';
+import { Typography, Button } from '@mui/material';
 import CssBaseline from '@mui/material/CssBaseline';
 
-import FlexCenterBox from "./components/CustomBoxs/FlexCenterBox.jsx"
 import VerticalCenterBox from "./components/CustomBoxs/VerticalCenterBox.jsx"
 import FlexBetweenBox from './components/CustomBoxs/FlexBetweenBox.jsx';
 import CustomRadio from './components/CustomRadio/CustomRadio';
 import CustomNumber from './components/CustomNumber/CustomNumber.jsx';
 
+import { tableOfOdds, simuladorJogo } from './utils/rollOdd.js';
+
 const DEFAULT_COST = { 1: false, 2: false, 3: false, 4: false, 5: false }
 const DEFAULT_SHOP = { 1: false, 2: false, 3: false, 4: false, 5: false, 6: false, 7: false, 8: false, 9: false }
 
 function App() {
-  const theme = useTheme()
-
   const [cost, setCost] = useState(DEFAULT_COST)
-  console.log("🚀 ~ file: App.js:18 ~ App ~ cost:", cost)
   const [hardCost, setHardCost] = useState(null)
-  console.log("🚀 ~ file: App.js:19 ~ App ~ hardCost:", hardCost)
   const [shop, setShop] = useState(DEFAULT_SHOP)
-  console.log("🚀 ~ file: App.js:22 ~ App ~ shop:", shop)
   const [hardShop, setHardShop] = useState(null)
-  console.log("🚀 ~ file: App.js:22 ~ App ~ hardShop:", hardShop)
   const [numberChampOutPool, setNumberChampOutPool] = useState(0)
   const [tierChampOutPool, setTierChampOutPool] = useState(0)
   const [rolls, setRolls] = useState(25)
   const [games, setGames] = useState(500)
+  const [data, setData] = useState({})
+  const [showTable, setShowTable] = useState(false)
 
   const handleCost = (tier) => {
     setCost({ ...DEFAULT_COST, [tier]: true })
@@ -69,8 +66,8 @@ function App() {
       setRolls("")
     } else if (formatNumber < 0) {
       setRolls(0)
-    } else if (formatNumber > 50) {
-      setRolls(50)
+    } else if (formatNumber > 100) {
+      setRolls(100)
     } else {
       setRolls(formatNumber)
     }
@@ -89,11 +86,20 @@ function App() {
     }
   }
 
+  const handleSimulation = () => {
+    if (!hardCost || !hardShop || !numberChampOutPool || !tierChampOutPool || !rolls || !games) return window.alert("Is missing data, check the inputs again")
+    let odds = tableOfOdds(hardCost, hardShop, 20, numberChampOutPool, tierChampOutPool)
+    console.log("🚀 ~ file: App.js:92 ~ handleSimulation ~ odds:", odds)
+    let gamesSimulation = simuladorJogo(games, rolls, hardCost, hardShop, numberChampOutPool, tierChampOutPool)
+    console.log("🚀 ~ file: App.js:94 ~ handleSimulation ~ gamesSimulation:", gamesSimulation)
+
+  }
+
   return (
     <VerticalCenterBox width="100vw" minHeight="100vh">
       <CssBaseline />
       {/* {FORM} */}
-      <VerticalCenterBox id="FORM" minWidth="700px" minHeight="50%" gap="3rem">
+      <VerticalCenterBox id="FORM" minWidth="700px" minHeight="50%" gap="2rem">
         {/* {TOP SIDE} */}
         <VerticalCenterBox id="TOP_CONTAINER" width="100%" gap="1rem">
           <Typography variant="caption">DESIRED CHAMPION TIER</Typography>
@@ -131,6 +137,27 @@ function App() {
               <CustomNumber onClick={() => setGames("")} value={games} onChange={(e) => handleGames(e.target.value)} />
             </FlexBetweenBox>
           </FlexBetweenBox>
+        </VerticalCenterBox>
+        <Button variant="outlined"
+          onClick={() => handleSimulation()}
+          sx={{
+            backgroundColor: "antiquewhite",
+            color: "black",
+            borderColor: "black",
+            '&:hover': {
+              borderColor: "black",
+            },
+          }}>SIMULAR</Button>
+      </VerticalCenterBox>
+      {/* {RESULT} */}
+      <VerticalCenterBox>
+        <VerticalCenterBox>
+          <Typography>GAMES SIMULATION</Typography>
+          {/* <TableSimulation show={showTable} data={data} /> */}
+        </VerticalCenterBox>
+        <VerticalCenterBox>
+          <Typography>TABLE OF ODDS</Typography>
+          {/* <TableOdds show={showTable} data={data} /> */}
         </VerticalCenterBox>
       </VerticalCenterBox>
     </VerticalCenterBox >

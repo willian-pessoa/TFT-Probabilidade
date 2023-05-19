@@ -78,25 +78,25 @@ export const simuladorJogo = (nJogos, rolls, cost, level, foraDaPool = 0, custoF
   return RESULT
 }
 
-const TOTAL_JOGOS = 500
-const RESULT = simuladorJogo(TOTAL_JOGOS, 40, 3, 7, 6, 6 * 8)
+// const TOTAL_JOGOS = 500
+// const RESULT = simuladorJogo(TOTAL_JOGOS, 40, 3, 7, 6, 6 * 8)
 
-const menosDuasCopias = Object.keys(RESULT).reduce((acc, key) => {
-  if (key < 3) {
-    return acc += RESULT[key]
-  }
-  return acc += 0
-}, 0)
-const maisTresCopias = TOTAL_JOGOS - menosDuasCopias
-const maisNoveCopias = Object.keys(RESULT).reduce((acc, key) => {
-  if (key >= 9) {
-    return acc += RESULT[key]
-  }
-  return acc += 0
-}, 0)
+// const menosDuasCopias = Object.keys(RESULT).reduce((acc, key) => {
+//   if (key < 3) {
+//     return acc += RESULT[key]
+//   }
+//   return acc += 0
+// }, 0)
+// const maisTresCopias = TOTAL_JOGOS - menosDuasCopias
+// const maisNoveCopias = Object.keys(RESULT).reduce((acc, key) => {
+//   if (key >= 9) {
+//     return acc += RESULT[key]
+//   }
+//   return acc += 0
+// }, 0)
 
-console.log("SIMULAÇÂO DE " + TOTAL_JOGOS + " JOGOS")
-console.log("Jogos com menos de duas cópias: ", menosDuasCopias, " isto é ", formatPercentage(menosDuasCopias / TOTAL_JOGOS))
-console.log("Jogos com mais de três cópias: ", maisTresCopias, " isto é ", formatPercentage(maisTresCopias / TOTAL_JOGOS))
-if (RESULT[0]) console.log(`Low Roll Extremo em ${RESULT[0]} jogos, achando 0 copias`)
-if (maisNoveCopias > 0) console.log(`High Roll Extremo em ${maisNoveCopias} jogos, achando bunecão 3 estrelas`)
+// console.log("SIMULAÇÂO DE " + TOTAL_JOGOS + " JOGOS")
+// console.log("Jogos com menos de duas cópias: ", menosDuasCopias, " isto é ", formatPercentage(menosDuasCopias / TOTAL_JOGOS))
+// console.log("Jogos com mais de três cópias: ", maisTresCopias, " isto é ", formatPercentage(maisTresCopias / TOTAL_JOGOS))
+// if (RESULT[0]) console.log(`Low Roll Extremo em ${RESULT[0]} jogos, achando 0 copias`)
+// if (maisNoveCopias > 0) console.log(`High Roll Extremo em ${maisNoveCopias} jogos, achando bunecão 3 estrelas`)
