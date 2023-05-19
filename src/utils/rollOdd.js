@@ -71,14 +71,15 @@ export const simuladorJogo = (nJogos, rolls, cost, level, foraDaPool = 0, custoF
     JOGOS[key] = copias
   }
 
-  return JOGOS
+  const RESULT = {}
+
+  Object.values(JOGOS).forEach(copias => RESULT[copias] ? RESULT[copias]++ : RESULT[copias] = 1)
+
+  return RESULT
 }
 
 const TOTAL_JOGOS = 500
-const RESULT = {}
-
-Object.values(simuladorJogo(TOTAL_JOGOS, 40, 3, 7, 6, 6 * 8)).forEach(copias => RESULT[copias] ? RESULT[copias]++ : RESULT[copias] = 1)
-console.log(RESULT)
+const RESULT = simuladorJogo(TOTAL_JOGOS, 40, 3, 7, 6, 6 * 8)
 
 const menosDuasCopias = Object.keys(RESULT).reduce((acc, key) => {
   if (key < 3) {
