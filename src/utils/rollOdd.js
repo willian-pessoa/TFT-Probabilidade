@@ -19,14 +19,14 @@ export const formatPercentage = (number) => {
 }
 
 export const computeOneChamp = (cost, level, rolls = 1, sameOutPool = 0, costOutPool = 0) => {
-  let champChance = (POOL[cost][1] - sameOutPool) / ((POOL[cost][0] * POOL[cost][0]) - costOutPool)
-  let shopChance = SHOP_ODDS[level][cost - 1] * 5
-  let totalChance = champChance * shopChance
+  let champChance = (POOL[cost][1] - sameOutPool) / ((POOL[cost][0] * POOL[cost][1]) - costOutPool)
+  let shopChance = SHOP_ODDS[level][cost - 1]
+  let totalChance = champChance * shopChance * 5
   if (rolls === 1) return totalChance
 
   for (let i = 1; i < rolls; i++) {
     let chanceNotFind = 1 - totalChance
-    totalChance = totalChance + (chanceNotFind * champChance * shopChance)
+    totalChance = totalChance + (chanceNotFind * champChance * shopChance * 5)
   }
 
   return totalChance

@@ -153,11 +153,11 @@ function App() {
       <VerticalCenterBox>
         <VerticalCenterBox>
           <Typography>GAMES SIMULATION</Typography>
-          {/* <TableSimulation show={showTable} data={data} /> */}
+          <TableSimulation show={showTable} data={data} />
         </VerticalCenterBox>
         <VerticalCenterBox>
           <Typography>TABLE OF ODDS</Typography>
-          {/* <TableOdds show={showTable} data={data} /> */}
+          <TableOdds show={showTable} data={data} />
         </VerticalCenterBox>
       </VerticalCenterBox>
     </VerticalCenterBox >
