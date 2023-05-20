@@ -6,6 +6,8 @@ import VerticalCenterBox from "./components/CustomBoxs/VerticalCenterBox.jsx"
 import FlexBetweenBox from './components/CustomBoxs/FlexBetweenBox.jsx';
 import CustomRadio from './components/CustomRadio/CustomRadio';
 import CustomNumber from './components/CustomNumber/CustomNumber.jsx';
+import TableSimulation from './components/TableSimulation/TableSimulation.jsx';
+import TableOdds from './components/TableOdds/TableOdds.jsx';
 
 import { tableOfOdds, simuladorJogo } from './utils/rollOdd.js';
 
@@ -87,12 +89,11 @@ function App() {
   }
 
   const handleSimulation = () => {
-    if (!hardCost || !hardShop || !numberChampOutPool || !tierChampOutPool || !rolls || !games) return window.alert("Is missing data, check the inputs again")
+    if (!hardCost || !hardShop || numberChampOutPool === "" || tierChampOutPool === "" || !rolls || !games) return window.alert("Is missing data, check the inputs again")
     let odds = tableOfOdds(hardCost, hardShop, 20, numberChampOutPool, tierChampOutPool)
-    console.log("🚀 ~ file: App.js:92 ~ handleSimulation ~ odds:", odds)
     let gamesSimulation = simuladorJogo(games, rolls, hardCost, hardShop, numberChampOutPool, tierChampOutPool)
-    console.log("🚀 ~ file: App.js:94 ~ handleSimulation ~ gamesSimulation:", gamesSimulation)
-
+    setData({ odds, gamesSimulation })
+    setShowTable(true)
   }
 
   return (
@@ -150,10 +151,10 @@ function App() {
           }}>SIMULAR</Button>
       </VerticalCenterBox>
       {/* {RESULT} */}
-      <VerticalCenterBox>
-        <VerticalCenterBox>
-          <Typography>GAMES SIMULATION</Typography>
-          <TableSimulation show={showTable} data={data} />
+      <VerticalCenterBox id="TABLES" minWidth="700px" minHeight="50%" gap="2rem">
+        <VerticalCenterBox width="100%">
+          <Typography margin="1rem 0">GAMES SIMULATION</Typography>
+          <TableSimulation show={showTable} data={data} totalGames={games}/>
         </VerticalCenterBox>
         <VerticalCenterBox>
           <Typography>TABLE OF ODDS</Typography>
