@@ -32,7 +32,6 @@ const TableSimulation = ({ show, data, totalGames }) => {
       9: formatPercentage(moreNineCopys / totalGames),
     };
   }, [gamesSimulation, totalGames]);
-  console.log("🚀 ~ file: TableSimulation.jsx:32 ~ report ~ report:", report);
 
   if (!show) return <></>;
 

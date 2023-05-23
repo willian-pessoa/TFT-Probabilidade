@@ -157,7 +157,7 @@ function App() {
           <TableSimulation show={showTable} data={data} totalGames={games}/>
         </VerticalCenterBox>
         <VerticalCenterBox>
-          <Typography>TABLE OF ODDS</Typography>
+          <Typography>CHANCE TO FIND ONE COPY</Typography>
           <TableOdds show={showTable} data={data} />
         </VerticalCenterBox>
       </VerticalCenterBox>
