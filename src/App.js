@@ -151,7 +151,7 @@ function App() {
           }}>SIMULAR</Button>
       </VerticalCenterBox>
       {/* {RESULT} */}
-      <VerticalCenterBox id="TABLES" minWidth="700px" minHeight="50%" gap="2rem">
+      <VerticalCenterBox id="TABLES" minWidth="700px" minHeight="50%" gap="2rem" marginBottom="2rem">
         <VerticalCenterBox width="100%">
           <Typography margin="1rem 0">GAMES SIMULATION</Typography>
           <TableSimulation show={showTable} data={data} totalGames={games}/>
