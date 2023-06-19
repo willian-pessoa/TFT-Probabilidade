@@ -101,6 +101,7 @@ function App() {
       <CssBaseline />
       {/* {FORM} */}
       <VerticalCenterBox id="FORM" minWidth="700px" minHeight="50%" gap="2rem">
+        <Typography variant="h4">TFT ODDS CALCULATOR</Typography>
         {/* {TOP SIDE} */}
         <VerticalCenterBox id="TOP_CONTAINER" width="100%" gap="1rem">
           <Typography variant="caption">DESIRED CHAMPION TIER</Typography>
@@ -148,13 +149,13 @@ function App() {
             '&:hover': {
               borderColor: "black",
             },
-          }}>SIMULAR</Button>
+          }}>SIMULATE</Button>
       </VerticalCenterBox>
       {/* {RESULT} */}
       <VerticalCenterBox id="TABLES" minWidth="700px" minHeight="50%" gap="2rem" marginBottom="2rem">
         <VerticalCenterBox width="100%">
           <Typography margin="1rem 0">GAMES SIMULATION</Typography>
-          <TableSimulation show={showTable} data={data} totalGames={games}/>
+          <TableSimulation show={showTable} data={data} totalGames={games} />
         </VerticalCenterBox>
         <VerticalCenterBox>
           <Typography>CHANCE TO FIND ONE COPY</Typography>
