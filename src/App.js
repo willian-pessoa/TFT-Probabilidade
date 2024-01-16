@@ -3,11 +3,6 @@ import { Typography, Button } from '@mui/material';
 import CssBaseline from '@mui/material/CssBaseline';
 import Hotjar from '@hotjar/browser';
 
-const siteId = 3827769;
-const hotjarVersion = 6;
-
-Hotjar.init(siteId, hotjarVersion);
-
 import VerticalCenterBox from "./components/CustomBoxs/VerticalCenterBox.jsx"
 import FlexBetweenBox from './components/CustomBoxs/FlexBetweenBox.jsx';
 import CustomRadio from './components/CustomRadio/CustomRadio';
@@ -16,6 +11,11 @@ import TableSimulation from './components/TableSimulation/TableSimulation.jsx';
 import TableOdds from './components/TableOdds/TableOdds.jsx';
 
 import { tableOfOdds, simuladorJogo } from './utils/rollOdd.js';
+
+const siteId = 3827769;
+const hotjarVersion = 6;
+
+Hotjar.init(siteId, hotjarVersion);
 
 const DEFAULT_COST = { 1: false, 2: false, 3: false, 4: false, 5: false }
 const DEFAULT_SHOP = { 1: false, 2: false, 3: false, 4: false, 5: false, 6: false, 7: false, 8: false, 9: false }
