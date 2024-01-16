@@ -1,6 +1,12 @@
 import { useState } from 'react';
 import { Typography, Button } from '@mui/material';
 import CssBaseline from '@mui/material/CssBaseline';
+import Hotjar from '@hotjar/browser';
+
+const siteId = 3827769;
+const hotjarVersion = 6;
+
+Hotjar.init(siteId, hotjarVersion);
 
 import VerticalCenterBox from "./components/CustomBoxs/VerticalCenterBox.jsx"
 import FlexBetweenBox from './components/CustomBoxs/FlexBetweenBox.jsx';
